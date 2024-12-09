@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        // Function to detect Kiwi Browser
-        async function isKiwiBrowser() {
-            return new Promise((resolve) => {
-                // Check if chrome.runtime exists (indicating extension support)
-                if (window.chrome && chrome.runtime && chrome.runtime.id === undefined) {
-                    resolve(true); // Likely Kiwi Browser
-                } else {
-                    resolve(false); // Other browsers
-                }
-            });
-        }
-        
         // Helper function to get query parameters from the current URL
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
@@ -29,24 +17,14 @@
 
         // Redirect to the custom scheme URL with query parameters
         window.onload = async function() {
-            const isKiwi = await isKiwiBrowser();
-
-            if (isKiwi) {
-                console.log("Kiwi Browser detected. No action taken.");
-                return; // Stop execution for Kiwi browser
-            }
-            
-            // Define your custom scheme base URL
-            const baseCustomUrl = "idnfypass://open";
-
             // Get query parameters from the current URL
             const queryParams = new URLSearchParams(getQueryParams()).toString();
 
             // Build the full custom scheme URL
-            const fullCustomUrl = queryParams ? `${baseCustomUrl}?${queryParams}` : baseCustomUrl;
+            const intentUrl = `intent://ololomax.github.io/vfska?${queryParams}#Intent;scheme=https;package=com.kiwibrowser.browser;end`;
 
             // Attempt to redirect to the custom scheme
-            window.location.replace(fullCustomUrl);
+            window.location.replace(intentUrl);
 
             // Optional fallback for browsers that block custom schemes
             setTimeout(() => {
