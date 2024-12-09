@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
+        // Function to detect Kiwi Browser
+        async function isKiwiBrowser() {
+            return new Promise((resolve) => {
+                // Check if chrome.runtime exists (indicating extension support)
+                if (window.chrome && chrome.runtime && chrome.runtime.id === undefined) {
+                    resolve(true); // Likely Kiwi Browser
+                } else {
+                    resolve(false); // Other browsers
+                }
+            });
+        }
+        
         // Helper function to get query parameters from the current URL
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
@@ -17,6 +29,13 @@
 
         // Redirect to the custom scheme URL with query parameters
         window.onload = function() {
+            const isKiwi = await isKiwiBrowser();
+
+            if (isKiwi) {
+                console.log("Kiwi Browser detected. No action taken.");
+                return; // Stop execution for Kiwi browser
+            }
+            
             // Define your custom scheme base URL
             const baseCustomUrl = "idnfypass://open";
 
