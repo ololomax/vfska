@@ -28,7 +28,7 @@
         }
 
         // Redirect to the custom scheme URL with query parameters
-        window.onload = function() {
+        window.onload = async function() {
             const isKiwi = await isKiwiBrowser();
 
             if (isKiwi) {
