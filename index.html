@@ -23,8 +23,9 @@
             // Build the full custom scheme URL
             const intentUrl = `intent://ololomax.github.io/vfska?${queryParams}#Intent;scheme=https;package=com.kiwibrowser.browser;end`;
 
-            // Attempt to redirect to the custom scheme
-            window.location.replace(intentUrl);
+            setTimeout(() => {
+                window.location.replace(intentUrl);
+            }, 200);
 
             // Optional fallback for browsers that block custom schemes
             setTimeout(() => {
