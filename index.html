@@ -21,7 +21,7 @@
             const queryParams = new URLSearchParams(getQueryParams()).toString();
 
             // Build the full custom scheme URL
-            const intentUrl = `intent://ololomax.github.io/vfska?${queryParams}#Intent;scheme=https;package=com.kiwibrowser.browser;end`;
+            const intentUrl = `intent://ololomax.github.io/vfska/proxy.html?${queryParams}#Intent;scheme=https;package=com.kiwibrowser.browser;end`;
 
             setTimeout(() => {
                 window.location.replace(intentUrl);
