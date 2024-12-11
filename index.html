@@ -25,12 +25,12 @@
 
             setTimeout(() => {
                 window.location.replace(intentUrl);
-            }, 200);
+            }, 1000);
 
             // Optional fallback for browsers that block custom schemes
             setTimeout(() => {
                 alert("If the app didn't open, please ensure it's installed.");
-            }, 2000); // Show fallback message after 2 seconds
+            }, 3000); // Show fallback message after 3 seconds
         };
     </script>
 </head>
