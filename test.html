@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Helper function to get query parameters from the current URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const query = {};
+            for (const [key, value] of params.entries()) {
+                query[key] = value;
+            }
+            return query;
+        }
+
+        // Redirect to the custom scheme URL with query parameters
+        window.onload = async function() {
+            // Get query parameters from the current URL
+            const queryParams = new URLSearchParams(getQueryParams()).toString();
+
+            // Build the full custom scheme URL
+            const intentUrl = `https://ololomax.github.io/vfska/proxy.html?${queryParams}`;
+
+            window.location.replace(intentUrl);
+
+            // Optional fallback for browsers that block custom schemes
+            setTimeout(() => {
+                alert("If the app didn't open, please ensure it's installed.");
+            }, 2000); // Show fallback message after 2 seconds
+        };
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>If the app does not open, please ensure it is installed on your device.</p>
+</body>
+</html>
